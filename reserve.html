@@ -76,12 +76,12 @@
         </form>
       </div>
       <div class="row">
-        <div class="col-12">
-          Control panel<br />
-          <a href="#">Clear Tables</a> | <a href="#">API Table Link</a> |
-          <a href="#">API Wait List</a>
+          <div class="col-12 mb-5">
+            Control panel<br />
+            <a href="#">Clear Tables</a> | <a href="/api/reservations">API Table Link</a> |
+            <a href="/api/waitlist">API Wait List</a>
+          </div>
         </div>
-      </div>
     </div>
     <script>
       let name = "";
@@ -112,7 +112,7 @@
         }
 
         saveReservation(newReservation);
-        // console.log(newReservation);
+        console.log(newReservation);
       }
 
       submitBtn.on("click", submitReservation);
