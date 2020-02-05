@@ -47,14 +47,26 @@ app.get("/api/waitlist", function(req, res){
 })
   
 app.post("/api/reserve", async function (req, res){
-    let newReservation = req.body;
-    try{
-       let reservations = await readFileAsync ("reservations.json", "utf8");
-        reservations = JSON.parse(reservations);
-        newReservationArray= reservations.push(newReservation);
+  let newReservation = req.body;
+  try{
+    let reservations = await readFileAsync ("reservations.json", "utf8");
+    reservations = JSON.parse(reservations);
+    if (reservations.length >= 5){
+      let waitlist = await readFileAsync ("waitlist.json", "utf8"); 
+      waitlist = JSON.parse(waitlist);
+      newReservationArray= waitlist.push(newReservation);
         
-    await writeFileAsync("reservations.json", JSON.stringify(reservations));
-    res.json(newReservation);
+      await writeFileAsync("waitlist.json", JSON.stringify(waitlist));
+      res.json(newReservation);
+
+    }
+    else {
+      newReservationArray= reservations.push(newReservation);
+        
+      await writeFileAsync("reservations.json", JSON.stringify(reservations));
+      res.json(newReservation);
+    }
+   
 } catch (err){
     throw(err);
 }
