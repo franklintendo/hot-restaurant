@@ -51,5 +51,27 @@
           </div>
         </div>
     </div>
+    <script>
+
+      const getReservation = function() {
+        return $.ajax({
+          url: "/api/reservations",
+          method: "GET"
+        });
+      };
+
+      const reserv = getReservation().then(function(data) {
+        // console.log(data);
+        // JSON.parse(data);
+        data.forEach(reservation => {
+          // console.log(reservation);
+          const newResDiv = $("<div class='pb-3 border-bottom'>");
+          newResDiv.append(`Name: ${ reservation.name} <br/> Email: ${ reservation.email} <br/> Phone Number: ${ reservation.phoneNumber} <br/> Unique ID: ${ reservation.id}`);
+          $(".current-reservation").append(newResDiv);
+        });
+
+      });
+
+    </script>
   </body>
 </html>
