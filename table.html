@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Hot Restaurant - Home</title>
+    <title>Hot Restaurant - Table</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
@@ -21,14 +21,26 @@
             <p class="lead">Book your seat before they are all gone!</p>
             <hr class="my-4" />
 
-            <a class="btn btn-primary btn-lg" href="/tables" role="button"
-              >View Tables</a
-            >
             <a class="btn btn-secondary btn-lg" href="/reserve" role="button"
               >Make Reservations</a
             >
+            <a class="btn btn-primary btn-lg" href="/" role="button">Home</a>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="card mb-5">
+        <div class="card-header">
+          Current Reservations
+        </div>
+        <div class="px-3 py-3 current-reservation"></div>
+      </div>
+      <div class="card mb-5">
+        <div class="card-header">
+          Waiting List
+        </div>
+        <div class="px-3 py-3 waiting-list"></div>
       </div>
       <div class="row">
         <div class="col-12">
