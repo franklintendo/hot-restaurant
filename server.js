@@ -5,6 +5,9 @@ const path = require("path");
 const fs = require ("fs"); 
 const util = require ("util");
 
+const writeFileAsync = util.promisify(fs.writeFile); 
+const readFileAsync = util.promisify(rs.readFile);
+
 // Sets up the Express App
 // =============================================================
 const app = express();
@@ -43,7 +46,20 @@ app.get("/api/waitlist", function(req, res){
     })
 })
   
-  
+app.post("/api/reservations", async function (req, res){
+    let newReservation = req.body;
+    try{
+       let reservations = await readFileAsync ("reservations.json", "utf8");
+        reservations = JSON.parse(reservations);
+        newReservationArray= reservations.push(newReservation);
+        
+    await writeFileAsync("reservations.json", JSON.stringify(reservations));
+    res.json(newReservation);
+} catch (err){
+    throw(err);
+}
+
+})
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, function() {
