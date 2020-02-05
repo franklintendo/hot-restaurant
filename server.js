@@ -6,7 +6,7 @@ const fs = require ("fs");
 const util = require ("util");
 
 const writeFileAsync = util.promisify(fs.writeFile); 
-const readFileAsync = util.promisify(rs.readFile);
+const readFileAsync = util.promisify(fs.readFile);
 
 // Sets up the Express App
 // =============================================================
@@ -53,7 +53,7 @@ app.post("/api/reservations", async function (req, res){
         reservations = JSON.parse(reservations);
         newReservationArray= reservations.push(newReservation);
         
-    await writeFileAsync("reservations.json", JSON.stringify(reservations));
+    await writeFileAsync("reservations.json", JSON.stringify(eservations));
     res.json(newReservation);
 } catch (err){
     throw(err);
