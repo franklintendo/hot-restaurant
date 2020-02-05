@@ -90,6 +90,14 @@
       let uniqueId = $("#unique-id").val().trim();
       const submitBtn = $("#submit-reservation");
 
+      let saveReservation = function(reservation){
+          return $.ajax({
+            url: "/api/reservations",
+            data: reservation,
+            method: "POST"
+          });
+        };
+
       function submitReservation() {
         name = $("#name").val().trim();
         email = $("#email").val().trim();
@@ -103,8 +111,8 @@
           id: uniqueId
         }
 
-
-        console.log(newReservation);
+        saveReservation(newReservation);
+        // console.log(newReservation);
       }
 
       submitBtn.on("click", submitReservation);
