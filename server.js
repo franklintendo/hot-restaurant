@@ -27,6 +27,22 @@ app.get("/reserve", function(req, res) {
     res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
+//create API routes 
+
+app.get("/api/reservations", function(req, res){
+    fs.readFile("reservations.json", "utf8", function(err, reservations){
+        if (err) throw err;
+        res.json(JSON.parse(reservations))
+    })
+})
+
+app.get("/api/waitlist", function(req, res){
+    fs.readFile("waitlist.json", "utf8", function(err, waitlist){
+        if (err) throw err;
+        res.json(JSON.parse(waitlist))
+    })
+})
+  
   
 // Starts the server to begin listening
 // =============================================================
