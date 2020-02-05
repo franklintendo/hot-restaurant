@@ -53,7 +53,7 @@ app.post("/api/reservations", async function (req, res){
         reservations = JSON.parse(reservations);
         newReservationArray= reservations.push(newReservation);
         
-    await writeFileAsync("reservations.json", JSON.stringify(eservations));
+    await writeFileAsync("reservations.json", JSON.stringify(reservations));
     res.json(newReservation);
 } catch (err){
     throw(err);
