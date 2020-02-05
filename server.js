@@ -46,7 +46,7 @@ app.get("/api/waitlist", function(req, res){
     })
 })
   
-app.post("/api/reserve", async function (req, res){
+app.post("/api/reservations", async function (req, res){
   let newReservation = req.body;
   try{
     let reservations = await readFileAsync ("reservations.json", "utf8");
